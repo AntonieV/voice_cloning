@@ -1,0 +1,5 @@
+*
+!.gitignore
+!linux_64_environment.yml
+!win_environment.yml
+!mailab_normalize_text.py
