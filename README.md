@@ -11,12 +11,13 @@ https://www.caito.de/2019/01/03/the-m-ailabs-speech-dataset/
 ### Installation:
 
 Execute the `install_voice_cloning.sh` script. Adapt 
-
+ 
 ### Manual installation:
 ```bash
 conda env create --file linux_64_environment.yml -n voice_cloning
 conda activate voice_cloning
-# adapt to cuda or rocm versio, see https://pytorch.org/ or for
+
+# adapt to own CUDA or ROCM version, see https://pytorch.org/ or for
 # previous versions see https://pytorch.org/get-started/previous-versions/
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.4.2
 ```
