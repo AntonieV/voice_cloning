@@ -5,6 +5,8 @@
 !mailab_normalize_text.py
 !install_voice_cloning.sh
 !encoder_preprocess.py
+!datasets
+!datasets/.gitkeep
 !assets
 !assets/**
 !encoder
