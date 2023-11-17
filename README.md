@@ -43,11 +43,11 @@ conda env export --no-builds -n voice_cloning > linux_64_environment.yml
     ```
     python encoder_preprocess.py datasets/
     ```
-   NOTE: on error `audioread.exceptions.NoBackendError` look above in error messages, there is a 
-   file failed with Error to opening file due to a broken wav file, for example: 
+   NOTE: on `audioread.exceptions.NoBackendError` look above in error messages, there is a 
+   file failed with an error message on opening file. This happens due to a broken wav file, for example: 
    
    ![](assets/screenshot_no_backend_error.png)
-   remove the file `datasets/de_DE/by_book/female/ramona_deininger/tom_sawyer/wavs/._tom_sawyer_09_f000196.wav` and 
+   remove the broken file `datasets/de_DE/by_book/female/ramona_deininger/tom_sawyer/wavs/._tom_sawyer_09_f000196.wav` and 
    every file which induce the same error in the downloaded data sets.
 
 3. Synthesizer preprocessing
