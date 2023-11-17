@@ -38,6 +38,7 @@ channels:
 dependencies:
   - _libgcc_mutex=0.1
   - _openmp_mutex=4.5
+  - ffmpeg=6.1
   - bzip2=1.0.8
   - ca-certificates=2023.7.22
   - certifi=2023.7.22
