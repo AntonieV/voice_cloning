@@ -7,7 +7,7 @@ https://www.caito.de/2019/01/03/the-m-ailabs-speech-dataset/
 * https://github.com/CorentinJ/Real-Time-Voice-Cloning
 * https://github.com/padmalcom/Real-Time-Voice-Cloning-German
 
-Adapted here for Linux usage (Ubuntu) and updated to newer versions for some packages.
+Adapted here for Linux/Ubuntu usage and updated to newer versions for some packages.
 
 ### Installation:
 
@@ -62,10 +62,12 @@ conda env export --no-builds -n voice_cloning > linux_64_environment.yml
     ```
     python encoder_train.py <name of training run> datasets/SV2TTS/encoder
     ```
-   Use the server URL given by second conda env shell (http://localhost:8097). Select
-   in browser interface in `Environment` dropt down in top bar the name of the encoder 
+   Use the server URL given by second conda env shell (https://localhost:8097). Select
+   in web interface in `Environment` drop down in top bar the name of the encoder 
    training run and deselect "main". Now visualizations of the training appear after a 
    while:
    ![](assets/visdom_server_frontend.png)
+   
+   The model will be saved in `saved_models` directory.
 4. 
 
