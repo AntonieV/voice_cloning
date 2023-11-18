@@ -50,5 +50,9 @@ conda env export --no-builds -n voice_cloning > linux_64_environment.yml
    remove the broken file `datasets/de_DE/by_book/female/ramona_deininger/tom_sawyer/wavs/._tom_sawyer_09_f000196.wav` and 
    every file which induce the same error in the downloaded data sets.
 
-3. Synthesizer preprocessing
+3. Encoder training:
+    ```
+    python encoder_train.py encoder_de datasets/SV2TTS/encoder --no_visdom
+    ```
+4. 
 
