@@ -7,6 +7,7 @@ https://www.caito.de/2019/01/03/the-m-ailabs-speech-dataset/
 * https://github.com/CorentinJ/Real-Time-Voice-Cloning
 * https://github.com/padmalcom/Real-Time-Voice-Cloning-German
 
+Adapted here for Linux usage (Ubuntu) and updated to newer versions for some packages.
 
 ### Installation:
 
@@ -52,13 +53,19 @@ conda env export --no-builds -n voice_cloning > linux_64_environment.yml
 
 3. Encoder training:
     ```
-    python encoder_train.py encoder_de datasets/SV2TTS/encoder --no_visdom
+    python encoder_train.py <name of training run> datasets/SV2TTS/encoder --no_visdom
     ```
-   Alternatively use a visdom server. For this start another voice_cloning conda environment and 
-   activate the server by typing the command `visdom`. The server will start at localhost:8097.
+   Alternatively use a visdom server. For this start another shell, activate the
+   voice_cloning conda environment there and run the server by typing the command 
+   `visdom`. The server will start at localhost:8097.
    In your first conda environment now the command without --no_visdom should be used:
     ```
-    python encoder_train.py encoder_de datasets/SV2TTS/encoder
+    python encoder_train.py <name of training run> datasets/SV2TTS/encoder
     ```
+   Use the server URL given by second conda env shell (http://localhost:8097). Select
+   in browser interface in `Environment` dropt down in top bar the name of the encoder 
+   training run and deselect "main". Now visualizations of the training appear after a 
+   while:
+   ![](assets/visdom_server_frontend.png)
 4. 
 
