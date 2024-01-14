@@ -5,6 +5,10 @@
 !mailab_normalize_text.py
 !install_voice_cloning.sh
 !encoder_preprocess.py
+!encoder_train.py
+!synthesizer_preprocess_audio.py
+!synthesizer_preprocess_embeds.py
+!synthesizer_train.py
 !LICENSE.md
 !datasets
 !datasets/.gitkeep
@@ -14,6 +18,13 @@
 !encoder/**
 !encoder/data_objects
 !encoder/data_objects/**
+!synthesizer/models
+!synthesizer/models/**
+!vocoder
+!vocoder/**
+!saved_models
+!saved_models/encoder_de
+!saved_models/encoder_de/encoder.pt
 !utils
 !utils/**
 

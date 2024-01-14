@@ -1,7 +1,7 @@
 ### source: https://github.com/padmalcom/Real-Time-Voice-Cloning-German
 ### own changes and adjustments marked with "# modified by AVI" in comment
 #
-#Copyright (c) padmalcom
+# Copyright (c) padmalcom
 #
 # MIT License
 #
