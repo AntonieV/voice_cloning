@@ -105,22 +105,24 @@ if __name__ == "__main__":
 			with open(metadata_path, newline='', encoding='utf-8') as csvfile:
 				csv_reader = csv.reader(csvfile, delimiter='|')
 				for row in csv_reader:
+					if "zs" in wav_folder:
+						print(row)
 					txt_file_to_create = os.path.join(wav_folder, row[0] + ".txt")
 					if os.path.exists(txt_file_to_create):
 						print(txt_file_to_create + " already exists.")
-					else:
-						expected_wav_file = os.path.join(wav_folder, row[0] + ".wav")
-						if os.path.exists(expected_wav_file):
-							if len(row) > 1:
-								print("All good. Creating " + txt_file_to_create)
-								f = codecs.open(txt_file_to_create, "w", "utf-8")
-								f.write(row[1])
-								f.close()
-								file_count +=1
-							else:
-								print("Metadat is corrupt" + str(row))
+					# changed by AVI: overwrite file in any case
+					expected_wav_file = os.path.join(wav_folder, row[0] + ".wav")
+					if os.path.exists(expected_wav_file):
+						if len(row) > 1:
+							print("All good. Creating " + txt_file_to_create)
+							f = codecs.open(txt_file_to_create, "w", "utf-8")
+							f.write(row[1])
+							f.close()
+							file_count +=1
 						else:
-							print("Corresponding wav file " + expected_wav_file + " was not found.")
+							print("Metadat is corrupt" + str(row))
+					else:
+						print("Corresponding wav file " + expected_wav_file + " was not found.")
 		else:
 			print("Expected file to exist: " + metadata_path)
 	

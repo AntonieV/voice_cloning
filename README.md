@@ -20,7 +20,7 @@ adapt the `Pytorch` version to own CUDA or ROCM
 version, see here for [latest version](https://pytorch.org/) in section "INSTALL PYTORCH". For older versions see 
 [here](https://pytorch.org/get-started/previous-versions/).
 3. Run the `install_voice_cloning.sh` script. 
- 
+
 ### Manual installation:
 
 If using ROCm the version can be checked by:
@@ -68,6 +68,8 @@ conda env export --no-builds -n voice_cloning > linux_64_environment.yml
     ```
     python mailab_normalize_text.py --datasets_root datasets/de_DE
     ```
+   Note: don't split double quotes over multiple text fragments in different audio files. 
+   In this case surround each of the text snippets for each sound file with double quotes.
 2. Encoder prepocessing:
     ```
     python encoder_preprocess.py datasets/
@@ -81,14 +83,14 @@ conda env export --no-builds -n voice_cloning > linux_64_environment.yml
 
 3. Encoder training:
     ```
-    python encoder_train.py <name of training run> datasets/SV2TTS/encoder --no_visdom
+    python encoder_train.py <name of training run, e.g. encoder_de> datasets/SV2TTS/encoder --no_visdom
     ```
    Alternatively use a visdom server. For this start another shell, activate the
    voice_cloning conda environment there and run the server by typing the command 
    `visdom`. The server will start at localhost:8097.
    In your first conda environment now the command without --no_visdom should be used:
     ```
-    python encoder_train.py <name of training run> datasets/SV2TTS/encoder
+    python encoder_train.py <name of training run, e.g. encoder_de> datasets/SV2TTS/encoder
     ```
    Use the server URL given by second conda env shell (https://localhost:8097). Select
    in web interface in `Environment` drop down in top bar the name of the encoder 
@@ -105,13 +107,37 @@ conda env export --no-builds -n voice_cloning > linux_64_environment.yml
    ```
    And embed the model from encoding:
    ```
-   python synthesizer_preprocess_embeds.py datasets/SV2TTS/synthesizer --encoder_model_fpath saved_models/encoder_de/encoder.pt
+   python synthesizer_preprocess_embeds.py datasets/SV2TTS/synthesizer --encoder_model_fpath saved_models/mini_encoder_de/encoder.pt
    ```
 5. Synthesizer training:
    
    ```
-   python synthesizer_train.py synthesizer_standard_voices_short_training datasets/SV2TTS/synthesizer
+   python synthesizer_train.py <name of training run, e.g. synthesizer_de> datasets/SV2TTS/synthesizer
    ``` 
    
-6. v
+   If this error occur ("EOFError: Ran out of input"):
+
+   ![](assets/synthesizer_eof_error.png)
+   
+   change in line 179 of script `synthesizer/train.py` the number of workers from 2 to 0: `num_workers=0`.
+
+6. Vocoder preprocessing:
+   Create the `vocoder` folder in `datasets/SV2TTS` and start the preprocessing:
+   
+   ```
+   mkdir -p datasets/SV2TTS/vocoder
+   python vocoder_preprocess.py datasets --model_dir=synthesizer/saved_models/synthesizer_de
+   ```
+
+8. Vocoder training:
+   Start training by using for example `vocoder_de` as model name and 
+   adding the path to the datasets
+   ```
+   python vocoder_train.py <name of training run, e.g. vocoder_de> datasets
+   ```
+   After training the model is located in: `vocoder/saved_models/vocoder_de`. In the
+   `wav` folder are pairs of .wav files: one with `_target.wav` suffix which is the original
+   sound file and one with `_gen_batched_target8000_overlap400.wav` suffix which is the
+   generated sound  file.
+9. v
 

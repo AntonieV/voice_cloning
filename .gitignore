@@ -8,10 +8,13 @@
 !encoder_train.py
 !synthesizer_preprocess_audio.py
 !synthesizer_preprocess_embeds.py
+!vocoder_preprocess.py
+!vocoder_train.py
 !synthesizer_train.py
 !LICENSE.md
 !datasets
 !datasets/.gitkeep
+!datasets/README_LICENSE.txt
 !assets
 !assets/**
 !encoder
