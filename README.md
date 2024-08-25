@@ -107,13 +107,14 @@ conda env export --no-builds -n voice_cloning > linux_64_environment.yml
    ```
    And embed the model from encoding:
    ```
-   python synthesizer_preprocess_embeds.py datasets/SV2TTS/synthesizer --encoder_model_fpath saved_models/mini_encoder_de/encoder.pt
+   python synthesizer_preprocess_embeds.py datasets/SV2TTS/synthesizer --encoder_model_fpath encoder/saved_models/mini_encoder_de/encoder.pt
    ```
 5. Synthesizer training:
    
    ```
    python synthesizer_train.py <name of training run, e.g. synthesizer_de> datasets/SV2TTS/synthesizer
    ``` 
+   python synthesizer_train.py mini_synthesizer_de datasets/SV2TTS/synthesizer
    
    If this error occur ("EOFError: Ran out of input"):
 
@@ -139,5 +140,17 @@ conda env export --no-builds -n voice_cloning > linux_64_environment.yml
    `wav` folder are pairs of .wav files: one with `_target.wav` suffix which is the original
    sound file and one with `_gen_batched_target8000_overlap400.wav` suffix which is the
    generated sound  file.
-9. v
+
+9. With `demo_cli.py` the correct environment/installation can be tested.
+
+10. Start the user interface for cloning:
+    ```bash
+    python demo_toolbox.py \
+    --enc_models_dir encoder/saved_models/mini_encoder_de \
+    --syn_models_dir synthesizer/saved_models/mini_synthesizer_de \
+    --voc_models_dir vocoder/saved_models/mini_vocoder_de \
+    -d datasets
+
+    ```
+11. For implementation and usage inside a project see `demo_simple.py`.
 

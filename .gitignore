@@ -25,11 +25,23 @@
 !synthesizer/models/**
 !vocoder
 !vocoder/**
-!saved_models
-!saved_models/encoder_de
-!saved_models/encoder_de/encoder.pt
+!toolbox
+!toolbox/**
 !utils
 !utils/**
+!demo_simple.py
+!demo_toolbox.py
+!demo_cli.py
+!toolbox
+!toolbox/**
+
+
+!split_text_files.ipynb
+
+
+saved_models
+synthesizer/saved_models
+vocoder/saved_models
 
 
 .idea

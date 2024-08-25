@@ -105,8 +105,6 @@ if __name__ == "__main__":
 			with open(metadata_path, newline='', encoding='utf-8') as csvfile:
 				csv_reader = csv.reader(csvfile, delimiter='|')
 				for row in csv_reader:
-					if "zs" in wav_folder:
-						print(row)
 					txt_file_to_create = os.path.join(wav_folder, row[0] + ".txt")
 					if os.path.exists(txt_file_to_create):
 						print(txt_file_to_create + " already exists.")

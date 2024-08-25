@@ -4,6 +4,12 @@ conda -V 2&> /dev/null
 ret=$?
 if [ $ret -eq 0 ]; then
   echo "Installing voice_cloning ..."
+
+  ### for AMD GPUs/ROCm install also libstdc++-12-dev,
+  ### see: https://github.com/ROCm/ROCm/issues/1889
+  ### see also: https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/11130
+  # sudo apt install libstdc++-12-dev
+
   eval "$(conda shell.bash hook)"
   conda update -n base -c conda-forge conda -y
   conda env create --file linux_64_environment.yml -n voice_cloning
